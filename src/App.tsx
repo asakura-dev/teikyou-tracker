@@ -77,7 +77,7 @@ function App() {
   const stopFaceLandmarkDetection = () => {
     console.log("stop", faceDetectionTimer);
     if (faceDetectionTimer.current) {
-      clearTimeout(faceDetectionTimer.current);
+      window.clearTimeout(faceDetectionTimer.current);
     }
     isDetectingRef.current = false;
     setIsDetecting(false);
@@ -92,7 +92,7 @@ function App() {
     if (faceDetectionWithFaceLandmarks) {
       draw(faceDetectionWithFaceLandmarks);
     }
-    faceDetectionTimer.current = setTimeout(detect, 0);
+    faceDetectionTimer.current = window.setTimeout(detect, 0);
   };
   const draw = (
     faceDetectionWithFaceLandmarks: faceapi.WithFaceLandmarks<{
@@ -176,6 +176,7 @@ function App() {
             width="480"
             height="360"
             autoPlay
+            playsInline
             muted
             className="absolute top-0 left-0 z-30"
           ></video>
