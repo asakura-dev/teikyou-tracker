@@ -53,7 +53,7 @@ function App() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const teikyoRef = useRef<HTMLImageElement | null>(null);
   const [isCameraEnabled, setIsCameraEnabled] = useState(false);
-  const [isShowCanvas, setIsShowCanvas] = useState(true);
+  const [isShowCanvas, setIsShowCanvas] = useState(false);
   const [isShowTeikyo, setIsShowTeikyo] = useState(true);
   const [isDetecting, setIsDetecting] = useState(false);
 
@@ -212,11 +212,15 @@ function App() {
         <div className="h-[100px]"></div>
         <div className="text-left flex flex-col">
           <button
+            disabled={!isCameraEnabled}
             className={[
               "p-2 rounded-md  text-white shadow-md ",
               isDetecting
                 ? "bg-red-500 hover:bg-red-600"
                 : "bg-sky-500 hover:bg-sky-600",
+              isCameraEnabled
+                ? ""
+                : "bg-slate-300 hover:bg-slate-300 cursor-not-allowed",
             ].join(" ")}
             onClick={() => {
               isDetecting
