@@ -61,8 +61,12 @@ function App() {
     if (!videoRef.current) {
       return;
     }
+    videoRef.current.setAttribute("autoplay", "");
+    videoRef.current.setAttribute("muted", "");
+    videoRef.current.setAttribute("playsinline", "");
     videoRef.current.srcObject = await navigator.mediaDevices.getUserMedia({
       video: {},
+      audio: false,
     });
     setIsCameraEnabled(true);
   };
